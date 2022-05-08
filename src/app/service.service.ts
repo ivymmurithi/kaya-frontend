@@ -12,4 +12,12 @@ export class ServiceService {
   getAccounts() {
     return this.http.get(environment.api_url)
   }
+
+  updateBalance(account_id: string, data: {}) {
+    return this.http.put(`${environment.api_url}update/balance/${account_id}`, data)
+  }
+
+  getTransactions() {
+    return this.http.get(`${environment.api_url}transactions/`)
+  }
 }

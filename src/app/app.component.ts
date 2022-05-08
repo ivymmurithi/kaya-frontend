@@ -13,13 +13,16 @@ export class AppComponent implements OnInit {
   accounts: any[] = []
   accountView = false;
   accountViewUserName!: string;
+  currentUserID!: string;
 
   constructor( private service: ServiceService) { }
 
-  onNameClick(username: string) {
+  onNameClick(username: string, userID: string) {
     this.accountViewUserName = username;
     console.log(username)
     this.accountView = true;
+    this.currentUserID = userID;
+    console.log(this.currentUserID)
   }
 
   ngOnInit() {
