@@ -3,4 +3,51 @@
         <h5 class="card-title">{{userName}}</h5>
         <p>{{balance}}</p>
     </div>
+    <div class="btn-group" role="group" aria-label="Basic outlined example">
+        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-outline-primary" name="Deposit" (click)="setClickName('DEPOSIT')">Deposit</button>
+        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-outline-primary" name="Withdraw" (click)="setClickName('WITHDRAW')">Withdraw</button>
+        <button type="button" data-bs-toggle="modal" data-bs-target="#transferModal" class="btn btn-outline-primary" name="Transfer" (click)="setClickName('TRANSFER')">Transfer</button>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{{actionName}}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <label for="amount">{{actionName}} AMOUNT: </label>
+                <input type="text" #amount>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" (click)="action(amount.value)" class="btn btn-primary">{{actionName}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="transferModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Transfer</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <label for="amount">TRANSFER AMOUNT: </label>
+                <input type="text" #transferamount>
+                <div>
+                    <label for="">TRANSFER TO: </label>
+                    <select [(ngModel)]="transferto" (change)="selected()" name="tranferto">
+                        <option [value]="account.id"  *ngFor="let account of accounts">{{account.username}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" (click)="transfer(transferamount.value)" class="btn btn-primary">Transfer</button>
+            </div>
+        </div>
+    </div>
 </div>

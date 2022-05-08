@@ -11,7 +11,7 @@
       <div class="collapse navbar-collapse" id="navbarNav" *ngIf="!loading else loadingAccounts">
         <ul class="navbar-nav">
           <li class="nav-item" *ngFor="let account of accounts">
-            <a class="nav-link active" aria-current="page" id="{{account.id}}" (click)="onNameClick(account.username)">{{account.username}}</a>
+            <a class="nav-link active" aria-current="page" id="{{account.id}}" (click)="onNameClick(account.username, account.id)">{{account.username}}</a>
           </li>
         </ul>
       </div>
@@ -27,5 +27,6 @@
 
 <app-account-details 
 *ngIf="accountView && !loading"
-[userName]="accountViewUserName">
+[userName]="accountViewUserName"
+[userID]="currentUserID">
 </app-account-details>
