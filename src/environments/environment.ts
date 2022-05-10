@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api_url: 'https://kaya-challenge-backend.herokuapp.com/api/'
+  api_url: 'https://kaya-challenge-backend.herokuapp.com/api/',
 };
 
 /*
