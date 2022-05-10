@@ -1,13 +1,18 @@
 <div class="card" style="width: 18rem;">
     <div class="card-body">
         <h5 class="card-title">{{userName}}</h5>
-        <p>{{balance}}</p>
+        <p> <strong>Balance: </strong> {{balance}}</p>
     </div>
     <div class="btn-group" role="group" aria-label="Basic outlined example">
         <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-outline-primary" name="Deposit" (click)="setClickName('DEPOSIT')">Deposit</button>
         <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-outline-primary" name="Withdraw" (click)="setClickName('WITHDRAW')">Withdraw</button>
         <button type="button" data-bs-toggle="modal" data-bs-target="#transferModal" class="btn btn-outline-primary" name="Transfer" (click)="setClickName('TRANSFER')">Transfer</button>
     </div>
+</div>
+
+<div *ngIf="error" class="alert alert-danger alert-dismissible fade show" id="error-alert" role="alert">
+    {{error}}
+    <button type="button" class="btn-close no-outline" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1">
@@ -40,7 +45,7 @@
                 <input type="text" #transferamount>
                 <div>
                     <label for="">TRANSFER TO: </label>
-                    <select [(ngModel)]="transferto" (change)="selected()" name="tranferto">
+                    <select [(ngModel)]="transferto" name="tranferto">
                         <option [value]="account.id"  *ngFor="let account of accounts">{{account.username}}</option>
                     </select>
                 </div>

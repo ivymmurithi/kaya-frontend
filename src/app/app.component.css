@@ -1,3 +1,12 @@
-.nav-link {
-    margin-right: 10%;
+body {
+    font-family: 'Poppins', sans-serif;
+} 
+
+.transactions {
+    margin-top: 2%;
+    line-height: 2rem;
+}
+
+h2 {
+    margin-bottom: 2%;
 }

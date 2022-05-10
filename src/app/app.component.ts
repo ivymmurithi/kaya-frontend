@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
   accountView = false;
   accountViewUserName!: string;
   currentUserID!: string;
+  transactions: any[] = []
 
   constructor( private service: ServiceService) { }
 
@@ -22,7 +23,6 @@ export class AppComponent implements OnInit {
     console.log(username)
     this.accountView = true;
     this.currentUserID = userID;
-    console.log(this.currentUserID)
   }
 
   ngOnInit() {
@@ -34,6 +34,15 @@ export class AppComponent implements OnInit {
         localStorage.setItem(`${account_.username}`, account_.balance)
       }
     })
+
+    this.service.getTransactions()
+    .subscribe((transactions: any) => {
+      this.transactions = transactions.transactions
+    })
   } 
+
+  homepage() {
+    this.accountView = false
+  }
 
 }
